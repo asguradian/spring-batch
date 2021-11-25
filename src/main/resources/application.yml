@@ -1,0 +1,12 @@
+spring:
+ batch:
+  job:
+   enabled: false
+  initialize-schema: never
+ datasource:
+  url: jdbc:mysql://192.168.11.21:3306/batch
+  username: loki
+  password: Home@123
+  driverName: com.mysql.jdbc.Driver
+log:
+ name: LOGG-FILE

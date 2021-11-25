@@ -1,0 +1,29 @@
+spring:
+ batch:
+  job:
+   enabled: false
+  initialize-schema: always
+ datasource:
+  url: jdbc:h2:mem:core
+  username: sa
+  password:
+  driverName: org.h2.Driver
+source:
+ db:
+  url: jdbc:h2:mem:source
+  username: sa
+  password:
+  driverName: org.h2.Driver
+target:
+ db:
+  url: jdbc:h2:mem:target
+  userName: sa
+  password:
+  driverName: org.h2.Driver
+log:
+ path: /Users/anilacharya/Documents/logs/test
+ name: LOGG-FILE
+job:
+ file:
+  path: target/test-outputs/
+

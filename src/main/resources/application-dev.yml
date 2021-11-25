@@ -1,0 +1,18 @@
+source:
+ db:
+  url: jdbc:mysql://192.168.11.21:3306/test
+  username: loki
+  password: Home@123
+  driverName: com.mysql.jdbc.Driver
+target:
+ db:
+  url: jdbc:mysql://192.168.11.21:3306/target
+  userName: loki
+  password: Home@123
+  driverName: com.mysql.jdbc.Driver
+log:
+ path: /Users/anilacharya/Documents/logs/dev
+job:
+ file:
+  path: /Users/anilacharya/Documents/uat/tmp/
+
