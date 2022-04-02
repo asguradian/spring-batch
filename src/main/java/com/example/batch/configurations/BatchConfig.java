@@ -100,11 +100,11 @@ public class BatchConfig {
         writer.setAppendAllowed(false);
         writer.setSaveState(true);
         writer.setHeaderCallback(wtr-> wtr.write("ID|FIRST_NAME|LAST_NAME|EMAIL|GENDER|WORK"));
-        writer.setLineAggregator(new DelimitedLineAggregator<>() {
+        writer.setLineAggregator(new DelimitedLineAggregator<User>() {
             {
                 setDelimiter("|");
 
-                setFieldExtractor(new BeanWrapperFieldExtractor<>() {
+                setFieldExtractor(new BeanWrapperFieldExtractor<User>() {
                     {
                         setNames(new String[] { "id", "firstName", "lastName", "email","gender","work"});
                     }
@@ -121,7 +121,7 @@ public class BatchConfig {
         FlatFileItemReader<User> reader = new FlatFileItemReader<>();
         reader.setResource(new FileSystemResource(paths));
         reader.setLinesToSkip(1);
-        reader.setLineMapper(new DefaultLineMapper<>() {
+        reader.setLineMapper(new DefaultLineMapper<User>() {
             {
                 setLineTokenizer(new DelimitedLineTokenizer() {
                     {
@@ -129,7 +129,7 @@ public class BatchConfig {
                         setNames(new String[] {  "id", "firstName", "lastName", "email","gender","work"});
                     }
                 });
-                setFieldSetMapper(new BeanWrapperFieldSetMapper<>() {
+                setFieldSetMapper(new BeanWrapperFieldSetMapper<User>() {
                     {
                         setTargetType(User.class);
                     }
