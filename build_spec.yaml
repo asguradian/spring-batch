@@ -11,6 +11,6 @@ steps:
       mvn versions:set -DnewVersion= ${OCI_PIPELINE_ID}
       mvn clean install
 outputArtifacts:
-  - name: "Delpoyable Jar"
+  - name: "Deployable jar"
     type: BINARY
     location: ${OCI_PRIMARY_SOURCE_DIR}/target/anil.txt
