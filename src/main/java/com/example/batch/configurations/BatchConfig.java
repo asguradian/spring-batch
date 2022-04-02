@@ -234,7 +234,7 @@ public class BatchConfig {
                 .transactionManager(platformTransactionManager)
                 .<User, User>chunk(5)
                 .reader(paginationItemReader())
-                .processor(getProcessor())
+                .processor(new UserProcessor())
                 .writer(fileWriter(null,null))
                 .build();
     }

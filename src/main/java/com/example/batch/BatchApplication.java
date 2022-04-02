@@ -17,15 +17,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
 
-import java.time.LocalDate;
 import java.util.Date;
-import java.util.List;
 
 @SpringBootApplication
 @EnableBatchProcessing
 @PropertySource("classpath:queries.properties")
 @Slf4j
-public class BatchApplication implements CommandLineRunner {
+public class
+BatchApplication implements CommandLineRunner {
 	@Autowired
 	JobLauncher jobLauncher;
 	@Autowired
@@ -41,14 +40,13 @@ public class BatchApplication implements CommandLineRunner {
 	}
 	@Override
 	public void run(String... args) throws Exception {
-       log.info("Starting the job...");
+       log.debug("Starting the job...");
         JobParameters params = new JobParametersBuilder()
-				.addString("businessDate", "2023-2002-29")
-				//.addString("tmpPath","/Users/anilacharya/Downloads/tmp.csv")
+				.addString("businessDate", new Date().toString())
 				.toJobParameters();
 
 	jobLauncher.run(job, params);
- 	System.out.println("Process completed!!!!!!");
+ 	log.debug("process completed..");
 	}
 
 

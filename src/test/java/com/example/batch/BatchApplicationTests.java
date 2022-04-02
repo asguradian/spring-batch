@@ -1,9 +1,5 @@
 package com.example.batch;
 
-import com.example.batch.configurations.BatchConfig;
-import com.example.batch.configurations.BeansConfig;
-import com.example.batch.configurations.SourceConnection;
-import com.example.batch.configurations.TargetConnection;
 import com.example.batch.model.User;
 import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
@@ -20,13 +16,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.jdbc.Sql;
 
 import javax.sql.DataSource;
 import java.io.IOException;
@@ -35,14 +31,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @SpringBatchTest
 @SpringBootTest
 @ActiveProfiles(value = "test")
 @EnableConfigurationProperties
 @TestPropertySource("classpath:queries-test.properties")
-@ContextConfiguration(classes = { BatchApplication.class,BeansConfig.class, BatchConfig.class, SourceConnection.class, TargetConnection.class})
 class BatchApplicationTests {
 
 	@Autowired
@@ -95,6 +89,7 @@ class BatchApplicationTests {
 	void contextLoads() throws Exception {
 		JobParameters params = new JobParametersBuilder()
 				.addString("businessDate", "2021-1001-29")
+				.addString("tempPath","target/work/")
 				.toJobParameters();
       JobExecution jobExecution=jobLauncherTestUtils.launchJob(params);
       System.out.println(jobExecution);

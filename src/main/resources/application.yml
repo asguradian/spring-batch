@@ -2,11 +2,14 @@ spring:
  batch:
   job:
    enabled: false
-  initialize-schema: never
+  initialize-schema: always
  datasource:
-  url: jdbc:mysql://192.168.11.21:3306/batch
-  username: loki
+  url: jdbc:mysql://192.168.11.14:3306/batch
+  username: anil
   password: Home@123
   driverName: com.mysql.jdbc.Driver
 log:
- name: LOGG-FILE
+ name: batch
+ job:
+  file:
+   path: ${user.home}/work/

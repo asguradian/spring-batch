@@ -41,12 +41,12 @@ public class BeansConfig {
     }
     @Bean
     @Qualifier("sourceConnectionSource")
-    public DataSource sourceConnectionSource(SourceConnection sourceConnection){
+    public DataSource source(SourceConnection sourceConnection){
         return this.getConnection(sourceConnection);
     }
-     @Bean
-     @Qualifier("targetConnectionSource")
-    public DataSource targetConnectionSource( TargetConnection targetConnection, SourceConnection sourceConnection){
+     @Bean("targetConnectionSource")
+    public DataSource target( TargetConnection targetConnection, SourceConnection sourceConnection){
         return this.getConnection(targetConnection) ;
     }
+
 }

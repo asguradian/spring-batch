@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
-
-    <springProperty scope="context" name="LOGS" source="log.path"/>
     <springProperty scope="context" name="NAME" source="log.name"/>
 
 <!--    <property name="LOGS" value="${logs.log.path}" />-->
@@ -17,7 +15,7 @@
 
     <appender name="RollingFile"
               class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOGS}/${NAME}.log</file>
+        <file>${user.home}/logs/${NAME}.log</file>
         <encoder
                 class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <Pattern>%d %p %C{1.} [%t] %m%n</Pattern>
@@ -26,7 +24,7 @@
         <rollingPolicy
                 class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- rollover daily and when the file reaches 10 MegaBytes -->
-            <fileNamePattern>${LOGS}/archived/${NAME}-%d{yyyy-MM-dd}.%i.log
+            <fileNamePattern>${user.home}/logs/archived/${NAME}-%d{yyyy-MM-dd}.%i.log
             </fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy
                     class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
@@ -37,7 +35,7 @@
 
     <springProfile name="dev">
         <root level="debug">
-            <appender-ref ref="Console"/>
+<!--            <appender-ref ref="Console"/>-->
             <appender-ref ref="RollingFile"/>
         </root>
         <logger name="fileLogger" additivity="false" level="debug">
@@ -47,7 +45,7 @@
 
     <springProfile name="uat">
         <root level="debug">
-            <appender-ref ref="Console"/>
+<!--            <appender-ref ref="Console"/>-->
             <appender-ref ref="RollingFile"/>
         </root>
         <logger name="fileLogger" additivity="false" level="debug">

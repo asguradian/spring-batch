@@ -1,4 +1,6 @@
 spring:
+ main:
+   allow-bean-definition-overriding: true
  batch:
   job:
    enabled: false
@@ -21,7 +23,7 @@ target:
   password:
   driverName: org.h2.Driver
 log:
- path: /Users/anilacharya/Documents/logs/test
+ path: target/log/
  name: LOGG-FILE
 job:
  file:
