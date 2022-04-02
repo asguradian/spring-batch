@@ -13,4 +13,4 @@ steps:
 outputArtifacts:
   - name: "Deployable-Jar"
     type: BINARY
-    location: ${OCI_PRIMARY_SOURCE_DIR}/target/anil.txt
+    location: ${OCI_PRIMARY_SOURCE_DIR}/target/batch-0.0.1-SNAPSHOT.jar
