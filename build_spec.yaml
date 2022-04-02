@@ -7,5 +7,10 @@ steps:
   - type: Command
     name: "Install project.."
     command: |
+      echo "${OCI_PIPELINE_ID}"
       mvn versions:set -DnewVersion= ${OCI_PIPELINE_ID}
       mvn clean install
+outputArtifacts:
+  - name: "Delpoyable Jar"
+    type: BINARY
+    location: ${OCI_PRIMARY_SOURCE_DIR}/target/anil.txt
